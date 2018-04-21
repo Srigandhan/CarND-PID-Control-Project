@@ -34,9 +34,9 @@ int main()
 
   PID pid;
   // TODO: Initialize the pid variable.
-  double Kp = 0.10;
-  double Ki = 0.009;
-  double Kd = 0.45;
+  double Kp = 0.2;
+  double Ki = 0.0;
+  double Kd = 3.2;
   pid.Init(Kp,Ki,Kd);
   
 
@@ -63,17 +63,18 @@ int main()
           * another PID controller to control the speed!
           */
 		  
-		  pid.UpdateError(cte);
+	  pid.UpdateError(cte);
           steer_value = pid.TotalError();
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-		  //if(cte>fabs(0.5))
-		  //msgJson["throttle"] = -0.1;
-		  //else
-		  msgJson["throttle"] = 0.1;
+	  if(speed>40)
+	     msgJson["throttle"] = 0.1;
+	  else
+	     msgJson["throttle"] = 0.5;
+
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
