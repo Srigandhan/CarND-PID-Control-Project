@@ -22,8 +22,8 @@ The below are the combination of values that I have tried. I have added my comme
 
 ![](PID_Controller.JPG)
 
-In certain cases, the controller couldn't control the car movement and the car went out of the track. I have chosen the following  values as it was able to perform really well in the curves by making it turn smoothly and is able to travel the entire track without going out of the track.
+I have tried the above values in a slower system. Then, I tried in a system which can process much better than the one I used previously. In certain cases, the controller couldn't control the car movement and the car went out of the track. I have chosen the following  values as it was able to perform really well in the curves by making it turn smoothly and is able to travel the entire track without going out of the track.
 
->**Kp=0.1
- Ki=0.007
- Kd=0.45**
+>**Kp=0.2
+ Ki=0.0
+ Kd=3.2**
